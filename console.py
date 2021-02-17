@@ -56,3 +56,68 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return
+    def do_show(self, arg):
+        """Prints the string representation of an
+        instance based on the class name and id
+        Usage: show <ClassName> <id>
+        """
+        args = arg.split()
+        if not arg:
+            print("** class name missing **")
+            return
+        if args[0] not in HBNBCommand.__bnb_classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        aux_key = "{}.{}".format(args[0], args[1])
+        if aux_key in storage.all():
+            print(storage.all()[aux_key])
+            return
+        else:
+            print("** no instance found **")
+            return
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name
+        and id (save the change into the JSON file).
+        Usage: destroy <ClassName> <id>
+        """
+        args = arg.split()
+        if not arg:
+            print("** class name missing **")
+            return
+        if args[0] not in HBNBCommand.__bnb_classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        aux_key = "{}.{}".format(args[0], args[1].replace('"', ''))
+        if aux_key in storage.all():
+            del storage.all()[aux_key]
+            storage.save()
+            return
+        else:
+            print("** no instance found **")
+            return
+    def do_all(self, arg):
+        """Prints all string representation of all
+        instances based or not on the class name.
+        Usage: all, all <ClassName>
+        """
+        if not arg:
+            all_list = []
+            for key, value in storage.all().items():
+                all_list.append(str(value))
+            print(all_list)
+            return
+        if arg in HBNBCommand.__bnb_classes:
+            all_list = []
+            for key, value in storage.all().items():
+                if type(value).__name__ == arg:
+                    all_list.append(str(value))
+            print(all_list)
+            return
+        else:
+            print("** class doesn't exist **")
