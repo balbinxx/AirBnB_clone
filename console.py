@@ -56,6 +56,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return
+
     def do_show(self, arg):
         """Prints the string representation of an
         instance based on the class name and id
@@ -78,6 +79,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
             return
+
     def do_destroy(self, arg):
         """Deletes an instance based on the class name
         and id (save the change into the JSON file).
@@ -101,6 +103,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
             return
+
     def do_all(self, arg):
         """Prints all string representation of all
         instances based or not on the class name.
@@ -121,6 +124,7 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             print("** class doesn't exist **")
+
     def do_update(self, arg):
         """Updates an instance based on the class name
         and id by adding or updating attribute (save
