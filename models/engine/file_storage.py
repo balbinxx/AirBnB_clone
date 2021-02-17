@@ -29,3 +29,35 @@ class FileStorage:
             a specify class
         """
         FileStorage.__objects["{}.{}".format(type(obj).__name__, obj.id)] = obj
+
+    def save(self):
+        """Public Instance Method that Serialize
+        elements from __objects to a JSON string
+        and save all of those in a JSON file
+        """
+        temp_dict = {}
+        for key, value in FileStorage.__objects.items():
+            temp_dict[key] = value.to_dict()
+        with open(FileStorage.__file_path, "w") as work_file:
+            json.dump(temp_dict, work_file)
+
+    def reload(self):
+        """Public instance Method that Deserializes
+        the JSON strings from the JSON file if it exist
+        and add the elements to the __objects dictionary
+        """
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
+        try:
+            with open(FileStorage.__file_path, "r") as work_file:
+                data = json.load(work_file)
+                for key, value in data.items():
+                    class_name = key.split(".")
+                    self.__objects[key] = eval(class_name[0])(**value)
+        except Exception:
+            pass
