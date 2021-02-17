@@ -121,3 +121,48 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             print("** class doesn't exist **")
+    def do_update(self, arg):
+        """Updates an instance based on the class name
+        and id by adding or updating attribute (save
+        the change into the JSON file).
+        Usage: update <ClassName> <id> <key> <value>
+        """
+        args = arg.split()
+        if arg == "":
+            print("** class name missing **")
+            return
+        if args[0] not in HBNBCommand.__bnb_classes:
+            print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        aux_key = "{}.{}".format(args[0], args[1].replace('"', ''))
+        if aux_key not in storage.all():
+            print("** no instance found **")
+            return
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        if args[3][0] == '"':
+            temp_value = " ".join(aux_arg for aux_arg in args[3:])
+            temp_value = temp_value.split('"')[1]
+        else:
+            temp_value = args[3]
+        if "." in temp_value:
+            try:
+                temp_value = float(temp_value)
+            except ValueError:
+                pass
+        else:
+            try:
+                temp_value = int(temp_value)
+            except ValueError:
+                pass
+        setattr(storage.all()[aux_key], args[2], temp_value)
+        storage.all()[aux_key].save()
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
