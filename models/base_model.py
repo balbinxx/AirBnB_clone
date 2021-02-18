@@ -14,10 +14,6 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Method constructor initialize an instance
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.update_at = datetime.now()
-
         if kwargs:
             form = "%Y-%m-%dT%H:%M:%S.%f"
             for key, value in kwargs.items():
@@ -35,11 +31,12 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def __str__(self):
 
-        """Print a readable sstirng
+        """Print a readable string
         """
         return "[{}] ({}) {}".format(
             self.__class__.__name__, self.id, self.__dict__)
@@ -50,7 +47,7 @@ class BaseModel:
         self.update_at = datetime.now()
         models.storage.save()
 
-    def to_dict(self):
+    """def to_dict(self):
         """Returns a dictionary with all keys/value
         of __dict__ of the instance
         """
@@ -66,13 +63,7 @@ class BaseModel:
         """representation of an object
         """
         return "[{}] ({}) {}".format
-        (self.__class__.__name__, self.id, self.__dict__)
-
-    def save(self):
-        """Instance public update the datetime
-        """
-        self.updated_at = datetime.now()
-        models.storage.save()
+        (self.__class__.__name__, self.id, self.__dict__)"""
 
     def to_dict(self):
         """Instance public create a dict
