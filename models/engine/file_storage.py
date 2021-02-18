@@ -63,5 +63,5 @@ class FileStorage:
                 for key, value in data.items():
                     class_name = key.split(".")
                     FileStorage.__objects[key] = eval(class_name[0])(**value)
-        except Exception:
+        except FileNotFoundError:
             pass
