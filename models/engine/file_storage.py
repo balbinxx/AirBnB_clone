@@ -3,8 +3,6 @@
     that handle all serialization-deserialization,
     to a JSON file for a persistent model
     """
-
-
 import json
 
 
@@ -14,6 +12,7 @@ class FileStorage():
     information from the JSON file
     """
     __file_path = "file.json"
+
     __objects = {}
 
     def all(self):
