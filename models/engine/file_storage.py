@@ -12,7 +12,6 @@ class FileStorage:
     information from the JSON file
     """
     __file_path = "file.json"
-
     __objects = {}
 
     def all(self):
@@ -43,7 +42,7 @@ class FileStorage:
         temp_dict = {}
         for key, value in FileStorage.__objects.items():
             temp_dict[key] = value.to_dict()
-        with open(FileStorage.__file_path, "w") as work_file:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as work_file:
             json.dump(temp_dict, work_file)
 
     def reload(self):
@@ -59,7 +58,7 @@ class FileStorage:
         from models.review import Review
         from models.state import State
         try:
-            with open(FileStorage.__file_path, "r") as work_file:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as work_file:
                 data = json.load(work_file)
                 for key, value in data.items():
                     class_name = key.split(".")
