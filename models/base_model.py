@@ -47,24 +47,6 @@ class BaseModel:
         self.update_at = datetime.now()
         models.storage.save()
 
-    """def to_dict(self):
-        """Returns a dictionary with all keys/value
-        of __dict__ of the instance
-        """
-        dictn = copy.deepcopy(self.__dict__)
-        dicn['__class__'] = self.__clas__.__name__
-
-        form = "%Y-%m-%dT%H:%M:%S.%f"
-        dictn['created_at'] = self.created_at.strftime(form)
-        dictn['updated_at'] = self.update_at.strftime(form)
-        dictn['id'] = self.id
-        return dictn
-
-        """representation of an object
-        """
-        return "[{}] ({}) {}".format
-        (self.__class__.__name__, self.id, self.__dict__)"""
-
     def to_dict(self):
         """Instance public create a dict
         """
