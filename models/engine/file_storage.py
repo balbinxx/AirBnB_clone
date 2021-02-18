@@ -62,6 +62,6 @@ class FileStorage:
                 data = json.load(work_file)
                 for key, value in data.items():
                     class_name = key.split(".")
-                    self.__objects[key] = eval(class_name[0])(**value)
+                    FileStorage.__objects[key] = eval(class_name[0])(**value)
         except Exception:
             pass
