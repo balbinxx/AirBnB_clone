@@ -13,20 +13,16 @@ from models.amenity import Amenity
 class TestAmenity(unittest.TestCase):
     """Tests for the Amenity class
     """
-
     def test_Amenity_pep8(self):
         """Test PEP8 style.
         """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(["./models/amenity.py"])
-        self.assertEqual(result.total_errors, 0)
+        self.assertEqual(result.total_errors, 0, "Found style errors")
 
-    def test_Amenity_pep8(self):
-        """Test PEP8 style
-        """
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(["tests/test_models/test_amenity.py"])
-        self.assertEqual(result.total_errors, 0)
+    def test_class(self):
+        amenity1 = Amenity()
+        self.assertEqual(amenity1.__class__.__name__, "Amenity")
 
 
 if __name__ == "__main__":
