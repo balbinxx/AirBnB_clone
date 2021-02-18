@@ -10,7 +10,6 @@ import copy
 class BaseModel:
     """New instance BaseModel class
     """
-
     def __init__(self, *args, **kwargs):
         """Method constructor initialize an instance
         """
@@ -35,7 +34,6 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-
         """Print a readable string
         """
         return "[{}] ({}) {}".format(
