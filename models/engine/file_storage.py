@@ -6,7 +6,7 @@
 import json
 
 
-class FileStorage:
+class FileStorage():
     """Class FileStorage, class tos instance a unique
     object storage that will process all saving and loading
     information from the JSON file
