@@ -10,17 +10,8 @@ A command interpreter is the part of a computer operating system that understand
 
 The clone AirBnB console can be run both interactively and non-interactively. To run the console in non-interactive mode, pipe any command(s) into an execution of the file console.py at the command line.
 
-$ AirBnB_clone$ ./console.py 
-(hbnb) help
+![](https://i.ibb.co/vvptpLK/Screenshot-from-2021-02-23-17-09-28.png)
 
-Documented commands (type help <topic>):
-========================================
-EOF  all  create  destroy  help  quit  show  update
-
-(hbnb) 
-(hbnb) 
-(hbnb) quit
-$
 
 # AUTHORS 
 
