@@ -1,4 +1,6 @@
-# AirBnB_clone
+![](https://a2.muscache.com/airbnb/static/logos/belo-200x200-4d851c5b28f61931bf1df28dd15e60ef.png)
+
+# AirBnB clone
 
 The objective of the project is to recreate a copy of the AirBnB website, with a series of tasks until the website is completed. The first part consists of developing the console, this goes from the back-end side with the Python programming language.
 
